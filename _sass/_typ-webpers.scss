@@ -1,0 +1,46 @@
+h1 {
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  position: relative;
+  color: #c24159;
+  font-size: 30px;
+}
+.header h1 {
+  text-align: left;
+}
+.suggested-resources h1:after {
+  content: "";
+  position: relative;
+  display: block;
+  width: 60%;
+  margin: 20px 20% 0;
+  height: 3px;
+  background-color: #c24159;
+  border-radius: 2px;
+}
+.suggested-resources {
+  margin-bottom: 40px;
+  p {
+    margin: 24px 0;
+    font-size: 20px;
+    line-height: 32px;
+  }
+}
+
+.button {
+  text-shadow: none !important;
+  border-radius: 8px !important;
+  border-bottom: 4px solid;
+  border-bottom-color: #000000;
+  box-shadow: 0 0 10px rgba(0,0,0,0.15) !important;
+  padding: 10px 15px;
+}
+.table {
+  th {
+    font-weight: normal;
+  }
+  td {
+    font-weight: bold;
+  }
+}
