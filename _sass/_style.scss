@@ -7,14 +7,6 @@ STYLE DO STATION:
 ol li:before {
   background-color: $corPrincipal !important;
 }
-#container > header {
-  background: $corPrincipal !important;
-  background: linear-gradient(to bottom, $corPrincipal 0%, darken($corPrincipal,10%) 100%) !important;
-}
-
-.clearfix {
-  background-color: #f0f0f5 !important;
-}
 
 .brand-header,
 .card {
@@ -30,18 +22,10 @@ ol li:before,
 .social-proof p {
   color: #f5f5f5 !important;
 }
-.button,
-.suggested-resources h1:after,
-.social-proof {
+
+.button {
   background-color: $corSecundaria !important;
 }
-.suggested-resources h1 {
-  color: $corSecundaria !important;
-}
-
 .button:hover {
-  background-color: darken($corSecundaria,10%) !important;
-}
-.button {
-  border-bottom-color: darken($corSecundaria,10%) !important;
+  background-color: lighten($corSecundaria, 15%) !important;
 }

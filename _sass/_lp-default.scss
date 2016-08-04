@@ -1,6 +1,15 @@
 /* TYPOGRAPHY */
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,400i,800);
 
+/* MIXINS */
+@mixin flex-valign($container-height){
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: auto;
+  min-height: $container-height;
+}
+
 * {
   font-family: 'Open Sans', sans-serif;
   line-height: 1.5 !important;
@@ -12,12 +21,16 @@
 body {
   font-size: 16px !important;
 }
-
+h1, h2, h3, h4, h5, h6 {
+  &:first-child{
+    margin-top: 0;
+  }
+}
 p.lead {
     margin: 32px 0;
 }
 ul, ol {
-  padding-left: 24px;
+  padding-left: 20px;
 }
 ul li, ol li {
   margin-bottom: 8px;
@@ -65,7 +78,8 @@ hr {
   float: none;
 }
   #container > section {
-    padding-bottom: 48px !important;
+    padding-bottom: 0px !important;
+    padding-top: 0px !important;
   }
     #container > section .socialfloating {
       top: 32px !important;
@@ -78,10 +92,12 @@ hr {
     	width:100%;
     }
 #content {
-  padding-bottom: 48px;
+  padding: 48px 30px;
 }
 .wrapper{
 	overflow: visible !important;
+  padding-left: 0;
+  padding-right: 0;
 }
 .container img {
 	max-width: 100%;
@@ -109,12 +125,13 @@ hr {
   width: 100%;
 }
 .brand-header img {
-  max-height: 25px;
+  max-height: 30px;
   max-width: 200px;
 	padding: 0;
   vertical-align: middle;
   display: block;
   margin: 0 auto;
+  width: auto;
 }
 .brand-header img+img {
   margin-top: 10px;
@@ -128,24 +145,16 @@ hr {
     font-weight: 700;
     font-size: 30px;
     margin: 0;
-    text-align: center;
   }
   .header h2 {
     font-weight: 400;
     font-size: 24px;
-    margin: 20px 0 40px;
+    margin: 20px 0 0;
     padding-bottom: 14px;
-    text-align: center;
   }
   .header img {
     padding: 0;
     margin: 0;
-  }
-  .img-eBook-framed {
-    background: url("https://s3.amazonaws.com/rd-marketing-objects/lp-materiais/ebook-bg.png") no-repeat top center;
-    background-size: contain;
-    padding: 28px !important;
-    margin: 0 30px;
   }
   .header-centered {
     text-align: center;
@@ -154,20 +163,26 @@ hr {
       margin: 20px 0 0;
     }
 
-.eBook-title h2, .eBook-thanks h2 {
-  border-bottom: 2px dotted;
+.offer-image {
+  text-align: center;
+  display: none;
 }
 
 /* FULL WIDTH CONTAINER */
 .full-width {
   padding: 32px 0;
+  background: #f4f4f4;
+}
+.full-width * {
+  border-color: #1b5c72;
+}
+.full-width.copyright {
+  background: #1b5c72;
 }
 
 .card {
   background-color: #ffffff;
-  padding: 30px 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  padding: 30px;
 }
 
 /* CONVERSION */
@@ -175,7 +190,6 @@ hr {
   box-shadow: 0 0 0;
   border-radius: 0;
   padding: 0;
-  margin: 0 -15px;
 }
   #conversion header {
     border-radius: 0;
@@ -245,66 +259,225 @@ input[type="button"], input[type="submit"], .button {
   display: block;
 }
 
-.social-proof{
-	background-color: #000;
-	position: absolute;
-	top: -20px;
-	right: 20px;
-	display: block;
-	width: 90px;
-	height: 90px;
-	overflow: hidden;
-	text-align: center;
-	padding: 22px 0 0 0;
-  border-radius: 45px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-}
-	.social-proof p{
-		color: #fff !important;
-		font-size: 10px !important;
-		text-transform: uppercase;
-	}
-	.social-proof p strong{
-		display: block;
-		font-weight: 700;
-		font-size: 18px;
-		margin: 0;
-	}
-  .social-proof.sp-small {
-    top: -10px;
-    right: 0px;
-    width: 70px;
-    height: 70px;
-    padding: 13px 0 0 0;
-    border-radius: 35px;
+$social-proof-color: #de7006;
+$w: 102px;
+.social-proof {
+  position: absolute;
+  display: none;
+  top: -30px;
+  right: -30px;
+  width: $w;
+  height: $w;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  z-index: 1;
+  * {
+    box-sizing: border-box;
   }
-    .social-proof.sp-small p{
-      font-size: 9px !important;
+  &-badge {
+    position: relative;
+    &-bg {
+      position: absolute;
+      left: 0;
+      right: 0;
+      width: $w/5*3;
+      height: $w/5*3;
+      margin: $w/5 auto;
+      &-1,
+      &-2,
+      &-3 {
+        position: absolute;
+        width: $w/5*3;
+        height: $w/5*3;
+        background: $social-proof-color;
+        border-radius: 3%;
+      }
+      &-1 {
+        transform: rotate(5deg);
+      }
+      &-2 {
+        transform: rotate(35deg);
+      }
+      &-3 {
+        transform: rotate(65deg);
+      }
     }
-    .social-proof.sp-small p strong{
-      font-size: 16px;
+    &-text {
+      position: absolute;
+      left: 0;
+      right: 0;
+      width: $w/5*3;
+      height: $w/5*3;
+      margin: 27px auto 0;
+      color: #fff;
+      text-align: center;
+      text-transform: uppercase;
+      border-radius: 100%;
+      &-1 {
+        display: block;
+    		font-weight: 700;
+    		font-size: 18px;
+    		margin: 0;
+      }
+      &-2 {
+        font-size: 8.5px;
+        text-transform: uppercase;
+        font-weight: 700;
+      }
     }
+  }
+}
 
-.related-horizontal {
+.tipboxIcon {
+  /* COR DA BOLINHA DO ICONE: */
+  background-color: #ffffff;
+  border-radius: 30px;
+  /* COR DA FONTE DO ICONE: */
+  color: #4F7B98;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: bold;
+  height: 20px !important;
+  line-height: 14px;
+  margin: 0 10px !important;
+  padding: 3px 0px;
+  position: relative;
   text-align: center;
+  width: 20px !important;
 }
-  .related-horizontal p.lead {
-    margin: 32px 0 64px;
-  }
-  .rel-offer [class^="col"] {
+
+.tipboxText {
+  /* COR DO FUNDO DO TIPBOX: */
+  background-color: #4F7B98;
+  border-radius: 3px;
+  box-shadow: 0 0 8px 0 rgba(0,0,0,0.2);
+  /* COR DA FONTE DO TIPBOX: */
+  color: #FFFFFF;
+  display: none;
+  font-size: 14px;
+  font-weight: normal;
+  left: -75px;
+  line-height: 18px;
+  min-width: 250px;
+  padding: 10px;
+  position: absolute;
+  text-align: left;
+  top: 25px;
+  z-index: 99;
+}
+
+.tipboxText:before {
+  /* COR DO FUNDO DO TIPBOX: */
+  background-color: #4F7B98;
+  content: '';
+  height: 25px;
+  left: 50%;
+  margin-left: -13px;
+  position: absolute;
+  top: -2px;
+  transform: rotate(45deg);
+  width: 25px;
+  z-index: -1;
+}
+
+.tipboxIcon:hover .tipboxText {
+  display: block;
+}
+
+
+.rel-offer
+{
+  margin: 60px 0 20px;
+  text-align: center;
+  [class^="col"] {
     margin-bottom: 40px;
-  }
-    .rel-offer [class^="col"] img {
+    padding: 0 15px;
+    img {
+      height: auto;
       max-height: 160px;
       width: auto;
       padding: 0;
     }
-  .rel-offer h2 {
+  }
+  h2 {
     font-size: 20px;
   }
+}
+.rel-header
+{
+  h1 {
+    font-weight: 700;
+    font-size: 32px;
+  }
+}
 
+.copyright {
+  background: #1d6685;
+  padding: 16px 0;
+  p {
+    color: #fff;
+    font-size: 14px;
+    padding: 0 30px;
+    text-align: center;
+    a {
+      color: #fff;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  }
+}
 
-@media screen and (min-width: 769px) {
+.kit-resources>[class^="col"] {
+    background: rgba(0,0,0,0.1);
+    padding: 0;
+    margin: 20px 0;
+    overflow: hidden;
+}
+.kit-resources [class^="col"] [class^="col"] {
+  padding: 30px;
+  text-align: left;
+  color: #fff;
+}
+.kit-resources .description:before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 1000px;
+    position: absolute;
+    background-color: rgba(0,0,0,0.05);
+    top: 0;
+    right: 0;
+}
+.kit-resources .btn-primary {
+    margin-bottom: 0;
+}
+.kit-resources h2 {
+    margin: 0;
+    font-size: 24px;
+}
+.kit-resources .btn-primary+h2 {
+  margin-top: 40px;
+}
+
+.label {
+  background-color: rgba(0,0,0,0.2);
+  padding: 5px 15px;
+  font-weight: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: inline-block;
+  position: relative;
+  top: -4px;
+  border-radius: 30px;
+}
+
+.embed-responsive {
+  margin-top: 30px;
+}
+
+@media screen and (min-width: 992px) {
   .brand-header {
     height: 45px;
   }
@@ -314,20 +487,14 @@ input[type="button"], input[type="submit"], .button {
     .brand-header img+img {
       margin: 0 0 0 20px;
     }
-  #content {
-    padding-right: 80px;
+  .offer-title, .offer-image {
+    @include flex-valign(300px);
   }
-  .eBook-title {
-    padding: 30px 0 0px;
-  }
-  .eBook-title h1 {
+  .offer-title h1, .offer-title h2 {
     text-align: left;
-    margin-left: 40px;
   }
-  .eBook-title h2 {
-    text-align: left;
-    margin: 20px 0 40px 40px;
-    max-width: 360px;
+  [class^="col"] {
+    padding: 0 40px;
   }
   .img-eBook-framed {
     margin: inherit;
@@ -335,6 +502,7 @@ input[type="button"], input[type="submit"], .button {
   }
   .button {
     display: inline-block;
+    max-width: 280px;
   }
   .button+.button {
     margin-left: 16px;
@@ -344,5 +512,18 @@ input[type="button"], input[type="submit"], .button {
   }
   .rel-offer h2 {
     min-height: 90px;
+  }
+  .socialfloating {
+    display: block;
+  }
+  .social-proof {
+    display: inline-block;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  #content, #conversion header, #conversion section, .full-width .wrapper {
+    padding-left: 15px;
+    padding-right: 15px;
   }
 }

@@ -1,0 +1,69 @@
+// ----
+// Sass (v3.4.21)
+// Compass (v1.0.3)
+// ----
+
+$corPrincipal: #1b5c72;
+$corSecundaria: #127b9e;
+
+$corSocialProof: #e4404f;
+$corBotao: #3dbd83;
+
+$branco: #f4f4f4;
+$preto: #444444 ;
+
+
+@function set-color($color) {
+  @if (lightness($color) > 50) {
+    @return $preto; // Lighter backgorund, return dark color
+  } @else {
+    @return $branco; // Darker background, return light color
+  }
+}
+
+
+#container > header {
+  background: $corPrincipal !important;
+  color: set-color($corPrincipal) !important;
+}
+#conversion {
+  background: $corSecundaria !important;
+  p, label {
+    color: set-color($corSecundaria) !important;
+  }
+}
+.full-width.copyright {
+  background: $corPrincipal !important;
+  color: set-color($corPrincipal) !important;
+}
+.full-width * {
+  border-color: $corPrincipal !important;
+}
+
+.button {
+  background-color: $corBotao !important;
+  color: set-color($corBotao) !important;
+}
+.button:hover {
+  background-color: lighten($corBotao, 15%) !important;
+}
+
+.social-proof-badge-bg-1,
+.social-proof-badge-bg-2,
+.social-proof-badge-bg-3 {
+  background: $corSocialProof !important;
+  color: $branco !important;
+}
+
+.brand-header {
+	background: $branco !important;
+  color: set-color($branco) !important;
+}
+.full-width {
+  background: $branco !important;
+  color: set-color($branco) !important;
+}
+.header h2 {
+  border-bottom-color: $branco !important;
+}
+  
