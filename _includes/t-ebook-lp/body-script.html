@@ -19,15 +19,32 @@
   </p>
 </div>
 
+<!-- Script Social Proof -->
+<script src="https://s3.amazonaws.com/rd-marketing-objects/cro/social-proof-experiment/jquery.easing.min.js"></script>
+<script src="https://s3.amazonaws.com/rd-marketing-objects/cro/social-proof-experiment/jquery.animateNumber.min.js"></script>
 <script type="text/javascript">
   $("document").ready(function(){
     $(".clearfix>.wrapper").addClass("container");
     $("#content").removeClass("left").addClass("col-md-6 col-md-offset-1");
     $("#conversion").removeClass("right").addClass("col-md-4");
-    // SOCIAL PROOF
-    $('#conversion header').append('<div class="social-proof"><div class="social-proof-badge"><div class="social-proof-badge-bg"><div class="social-proof-badge-bg-1"></div><div class="social-proof-badge-bg-2"></div><div class="social-proof-badge-bg-3"></div></div><div class="social-proof-badge-text"><div class="social-proof-badge-text-1">9999</div><div class="social-proof-badge-text-2">downloads</div></div></div></div>');
+    $('#preloader').remove();
+    function parseData(data){
+      var rows = data.feed.entry;
+
+      for (var i  = 0; i< rows.length; i++){
+        if (rows[i].title["$t"] == window.location.pathname.replace('', '') + '/conversao'){
+          var downloadsNumber = rows[i].content["$t"].split(": ")[1];
+          $('.rel-offer .card').append('<div class="social-proof"><div class="social-proof-badge"><div class="social-proof-badge-bg"><div class="social-proof-badge-bg-1"></div><div class="social-proof-badge-bg-2"></div><div class="social-proof-badge-bg-3"></div></div><div class="social-proof-badge-text"><div class="social-proof-badge-text-1">0</div><div class="social-proof-badge-text-2">downloads</div></div></div></div>');
+          setTimeout(function() {
+            var comma_separator_number_step = $.animateNumber.numberStepFactories.separator('.')
+            $('.social-proof .number').animateNumber({ number: downloadsNumber, numberStep: comma_separator_number_step,  easing: 'easeInOutCirc' }, 3000);
+          }, 1000);
+        }
+      }
+    }
   });
-  $(window).load(function(){
-   $('#preloader').fadeOut('slow',function(){$(this).remove();});
-  });
+  // $(window).load(function(){
+  //  $('#preloader').fadeOut('slow',function(){$(this).remove();});
+  // });
 </script>
+<script src="https://spreadsheets.google.com/feeds/list/1EoKRmk8VR_WKrdnBCvFLny34u0qO_le0PgA6a3SdY7s/od6/public/basic?hl=en_US&alt=json&callback=parseData"></script>
