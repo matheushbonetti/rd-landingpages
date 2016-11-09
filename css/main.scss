@@ -11,7 +11,7 @@
     // Reset and dependencies
     "bootstrap-sass/assets/stylesheets/bootstrap/normalize",
     // "bootstrap-sass/assets/stylesheets/bootstrap/print",
-    "bootstrap-sass/assets/stylesheets/bootstrap/glyphicons",
+    //"bootstrap-sass/assets/stylesheets/bootstrap/glyphicons",
     // Core CSS
     "bootstrap-sass/assets/stylesheets/bootstrap/scaffolding",
     "bootstrap-sass/assets/stylesheets/bootstrap/type",
@@ -54,6 +54,7 @@
 
 // Imports of SCSS Styles from the _sass directory
 @import
-  "lp-default",
-  "t-ebook-lp"
+  //"lp-default",
+  //"t-ebook-lp",
+  "typography"
 ;
