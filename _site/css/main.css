@@ -2415,3 +2415,42 @@ input[type="button"].btn-block {
     display: none !important; } }
 * {
   font-family: "Open Sans", sans-serif; }
+
+#container > header {
+  padding: 0 !important; }
+
+section.clearfix {
+  box-shadow: none !important; }
+
+.lp-logos {
+  padding: 8px 0; }
+  .lp-logos .wrapper {
+    max-width: 100%;
+    text-align: center; }
+    .lp-logos .wrapper img {
+      max-width: 180px;
+      max-height: 36px; }
+
+@media screen and (max-width: 992px) {
+  .lp-logos .wrapper img {
+    padding: 0; } }
+section.clearfix {
+  background-image: url(https://s3.amazonaws.com/rd-marketing-objects/lp-model/lp-trial-rdstation/bg-home-case.png);
+  background-size: cover; }
+  section.clearfix .wrapper {
+    display: flex; }
+
+#content, #conversion {
+  width: auto !important;
+  margin: 0 !important; }
+
+#content {
+  flex-grow: 3; }
+
+#conversion {
+  flex-grow: 2; }
+
+@media screen and (min-width: 1200px) {
+  .wrapper {
+    width: 100% !important;
+    max-width: 1200px; } }

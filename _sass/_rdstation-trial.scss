@@ -1,0 +1,27 @@
+section.clearfix {
+  background-image: url(https://s3.amazonaws.com/rd-marketing-objects/lp-model/lp-trial-rdstation/bg-home-case.png);
+  background-size: cover;
+  .wrapper {
+    display: flex;
+  }
+}
+
+#content, #conversion {
+  width: auto !important;
+  margin: 0 !important;
+}
+
+#content {
+  flex-grow: 3;
+}
+#conversion {
+  flex-grow: 2;
+}
+
+
+@media screen and (min-width: $screen-lg) {
+  .wrapper {
+    width: 100% !important;
+    max-width: 1200px;
+  }
+}

@@ -1,0 +1,25 @@
+#container>header {
+  padding: 0 !important;
+}
+
+section.clearfix {
+  box-shadow: none !important;
+}
+
+.lp-logos{
+  padding: 8px 0;
+  .wrapper {
+    max-width: 100%;
+    text-align: center;
+    img {
+      max-width: 180px;
+      max-height: 36px;
+    }
+  }
+}
+
+@media screen and (max-width: $screen-md) {
+  .lp-logos .wrapper img {
+    padding: 0;
+  }
+}
